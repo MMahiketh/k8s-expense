@@ -21,7 +21,7 @@ spec:
         tier: db
         project: expense
     spec:
-      container:
+      containers:
       - name: mysql
         image: mahiketh/mysql:v1
 ---
