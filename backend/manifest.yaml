@@ -24,6 +24,9 @@ spec:
       containers:
       - name: backend
         image: mahiketh/backend:v1
+        envFrom:
+        - configMapRef:
+            name: backend
 ---
 kind: Service
 apiVersion: v1
