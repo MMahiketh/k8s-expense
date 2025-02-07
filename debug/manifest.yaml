@@ -1,0 +1,11 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: debug
+  namespace: expense
+  labels:
+spec:
+  containers:
+  - name: debug
+    image: almalinux:9
+    command: ["sleep", "20000"]
