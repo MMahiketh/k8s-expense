@@ -40,3 +40,20 @@ spec:
     protocol: TCP
     port: 3306
     targetPort: 3306
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mysql-headless
+  namespace: expense
+spec:
+  clusterIP: None
+  selector:
+    app: mysql
+    tier: db
+    project: expense
+  ports:
+  - name: mysql-port
+    protocol: TCP
+    port: 3306
+    targetPort: 3306
