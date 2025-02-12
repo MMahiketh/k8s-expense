@@ -1,4 +1,4 @@
-kind: Deployment
+kind: Statefulset
 apiVersion: apps/v1
 metadata:
   name: mysql
@@ -8,7 +8,8 @@ metadata:
     tier: db
     project: expense
 spec:
-  replicas: 1
+  serviceName: "mysql-headless"
+  replicas: 2
   selector:
     matchLabels:
       app: mysql
@@ -24,6 +25,23 @@ spec:
       containers:
       - name: mysql
         image: mahiketh/mysql:v1
+        volumeMounts:
+        - name: mysql
+          mountPath: /var/lib/mysql
+
+# pvc defination directly mentioned in statefulset
+  volumeClaimTemplates:
+    - metadata:
+        name: mysql
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        storageClassName: mysql-ebs
+        resources:
+          requests:
+            storage: 1Gi
+
+# normal service - clusterIP
 ---
 kind: Service
 apiVersion: v1
@@ -40,6 +58,8 @@ spec:
     protocol: TCP
     port: 3306
     targetPort: 3306
+
+# headless service
 ---
 kind: Service
 apiVersion: v1
