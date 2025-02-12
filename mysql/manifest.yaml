@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: mahiketh/mysql:v1
+        image: joindevops/mysql:v1
         volumeMounts:
         - name: mysql
           mountPath: /var/lib/mysql
