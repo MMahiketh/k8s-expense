@@ -27,6 +27,13 @@ spec:
         envFrom:
         - configMapRef:
             name: backend
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
 ---
 kind: Service
 apiVersion: v1
