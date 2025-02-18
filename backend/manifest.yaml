@@ -1,3 +1,17 @@
+kind: HorizontalPodAutoscaler
+apiVersion: autoscaling/v1
+metadata:
+  name: backend
+  namespace: expense
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    apiVersion: apps/v1
+    name: backend
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 15
+---
 kind: Deployment
 apiVersion: apps/v1
 metadata:
