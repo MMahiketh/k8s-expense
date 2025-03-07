@@ -24,16 +24,16 @@ spec:
       containers:
       - name: mysql
         image: mahiketh/mysql:v1
-      readinessProbe:
-        initialSeconds: 15
-        periodSeconds: 10
-        tcpSocket:
-          port: 3306
-      livenessProbe:
-        initialSeconds: 15
-        periodSeconds: 10
-        tcpSocket:
-          port: 3306
+        readinessProbe:
+          initialSeconds: 15
+          periodSeconds: 10
+          tcpSocket:
+            port: 3306
+        livenessProbe:
+          initialSeconds: 15
+          periodSeconds: 10
+          tcpSocket:
+            port: 3306
 ---
 kind: Service
 apiVersion: v1
