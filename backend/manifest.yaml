@@ -27,6 +27,17 @@ spec:
         envFrom:
         - configMapRef:
             name: backend
+        readinessProbe:
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          tcpSocket:
+            port: 8080
+        livenessProbe:
+          initialDelaySeconds: 3
+          periodSeconds: 3
+          httpGet:
+            port: 8080
+            path: /health
 ---
 kind: Service
 apiVersion: v1
