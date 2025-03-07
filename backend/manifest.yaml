@@ -21,6 +21,10 @@ spec:
         tier: api
         project: expense
     spec:
+      initContainers:
+      - name: check-mysql
+        image: busy-box-asdf
+        command: ["sh", "-c", "until nslookup mysql; do echo waiting for mysql-service; sleep 3; done"]
       containers:
       - name: backend
         image: mahiketh/backend:v1
