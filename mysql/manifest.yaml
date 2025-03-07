@@ -25,12 +25,12 @@ spec:
       - name: mysql
         image: mahiketh/mysql:v1
         readinessProbe:
-          initialSeconds: 15
+          initialDelaySeconds: 15
           periodSeconds: 10
           tcpSocket:
             port: 3306
         livenessProbe:
-          initialSeconds: 15
+          initialDelaySeconds: 15
           periodSeconds: 10
           tcpSocket:
             port: 3306
