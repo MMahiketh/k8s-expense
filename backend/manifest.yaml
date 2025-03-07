@@ -23,7 +23,7 @@ spec:
     spec:
       initContainers:
       - name: check-mysql
-        image: busy-box-asdf
+        image: busybox:1.28
         command: ["sh", "-c", "until nslookup mysql; do echo waiting for mysql-service; sleep 3; done"]
       containers:
       - name: backend
