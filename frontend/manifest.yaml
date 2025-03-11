@@ -52,7 +52,7 @@ metadata:
   name: frontend
   namespace: expense
 spec:
-  type: LoadBalancer
+  # type: LoadBalancer
   selector:
     app: frontend
     tier: web
@@ -62,3 +62,15 @@ spec:
     protocol: TCP
     port: 80
     targetPort: 80
+---
+kind: TargetGroupBinding
+apiVersion: elbv2.k8s.aws/v1beta1
+metadata:
+  name: frontend
+  namespace: expense
+spec:
+  serviceRef:
+    name: frontend
+    port: 80
+  targetGroupARN: arn:aws:elasticloadbalancing:us-east-1:339712874850:targetgroup/expense-dev/d2d407363c0121b3
+  targetType: ip
